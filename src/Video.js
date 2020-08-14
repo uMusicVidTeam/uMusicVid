@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactPlayer from 'react-player';
 
 function Video(props) {
 	return (
 		<div>
-			<ReactPlayer controls url='https://www.youtube.com/watch?v=3NXBgSCSrIk' />
+			<div className='video'>
+				<ReactPlayer
+					controls
+					url='https://www.youtube.com/watch?v=3NXBgSCSrIk'
+				/>
+			</div>
+			
 		</div>
 	);
 }
