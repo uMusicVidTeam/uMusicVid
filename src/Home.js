@@ -7,7 +7,7 @@ function Home() {
 	let [videos, setVideos] = useState([])
 
 	useEffect(() => {
-		Axios.get('https://umusicvid.herokuapp.com/videos').then((res) => {
+		Axios.get('http://localhost:8080/api/videos').then((res) => {
 			setVideos(res.data.map((video) => {
 				return (
 		<Video
@@ -15,6 +15,9 @@ function Home() {
 			title={video.title}
 			artist={video.artist}
 			genre={video.genre}
+			votes={video.votes}
+			id={video._id}
+			key={video._id}
 		/>
 				)
 			}));

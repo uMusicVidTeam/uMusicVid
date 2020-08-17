@@ -8,9 +8,8 @@ function Create(props) {
 	let [genre, setGenre] = useState('');
 
 	const handleSubmit = (event) => {
-		event.preventDefault();
 		Axios
-			.post(`https://umusicvid.herokuapp.com/videos/${title}`, { url: url, title: title, artist: artist, genre: genre })
+			.post(`http://localhost:8080/api/videos/`, { url: url, title: title, artist: artist, genre: genre })
 			.then((res) => {
 				props.setCreate('none');
 				console.log(res);
