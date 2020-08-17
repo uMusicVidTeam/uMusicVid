@@ -1,14 +1,27 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import Axios from 'axios';
 
 function Create(props) {
-    let [url, setUrl] = useState('')
-    let [title, setTitle] = useState('')
-    let [artist, setArtist] = useState('')
-    let [genre, setGenre] = useState('')
+	let [url, setUrl] = useState('');
+	let [title, setTitle] = useState('');
+	let [artist, setArtist] = useState('');
+	let [genre, setGenre] = useState('');
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		Axios
+			.post(`https://umusicvid.herokuapp.com/videos/${title}`, { url: url, title: title, artist: artist, genre: genre })
+			.then((res) => {
+				props.setCreate('none');
+				console.log(res);
+			});
+	};
 
 	return (
 		<div className='modal' style={{ display: props.create }}>
-			<form style={{ display: 'flex', flexDirection: 'column'}}>
+			<form
+				style={{ display: 'flex', flexDirection: 'column' }}
+				onSubmit={handleSubmit}>
 				<input
 					onChange={(event) => setUrl(event.target.value)}
 					id='url'

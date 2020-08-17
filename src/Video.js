@@ -7,7 +7,7 @@ function Video(props) {
 			<div className='video'>
 				<ReactPlayer
 					controls
-					url='https://www.youtube.com/watch?v=3NXBgSCSrIk'
+					url={props.url}
 				/>
 			</div>
 			
