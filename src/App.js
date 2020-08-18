@@ -1,21 +1,32 @@
-import React, {useState} from 'react';
-import Header from "./Header";
-import Home from "./Home";
-import About from './About';
+import React from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
+
+import Header from './components/Header';
+import Home from './components/Home';
+import VideoList from './components/VideoList';
+import VideoCreate from './components/VideoCreate';
+import VideoEdit from './components/VideoEdit';
+import Video from './components/Video.js';
+import About from './components/About';
 import './App.css';
 
-
-
-function App() {
-  
-
-  return (
-    <div className="App">
-      <Header />
-      <Home />
-      
-    </div>
-  );
-}
+const App = () => (
+	<div>
+		<header>
+			<Link></Link>
+			<Link></Link>
+			<Link></Link>
+		</header>
+		<main>
+			<Switch>
+				<Route />
+				<Route />
+				<Route />
+				<Route />
+				<Route />
+			</Switch>
+		</main>
+	</div>
+);
 
 export default App;

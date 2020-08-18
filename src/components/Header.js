@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Create from './Create';
+import Create from './components/Create';
 import About from './About';
 
 function Header(props) {
