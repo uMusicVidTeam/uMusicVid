@@ -13,8 +13,6 @@ function Video(props) {
 			<h3>{props.title}</h3>
 			<div className='video'>
 				<ReactPlayer
-				light='true'
-				playIcon='none'
 					controls
 					width='180px'
 					height='180px'

@@ -12,7 +12,18 @@ function Home() {
 				setVideos(
 					res.data.map((video) => {
 						return (
-							<Video
+							video
+						);
+					})
+				);
+			}
+		);
+	}, []);
+		
+	let display = videos.map(video => {
+	return (
+		<div>
+			<Video
 								url={video.url}
 								title={video.title}
 								artist={video.artist}
@@ -21,20 +32,15 @@ function Home() {
 								id={video._id}
 								key={video._id}
 							/>
-						);
-					})
-				);
-			}
-		);
-	}, []);
-		
-	
+		</div>
+	);
+	})
 
 	return (
 		<div>
-			{videos}
+			{display}
 		</div>
-	);
+	)
 }
 
 export default Home;
