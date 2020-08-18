@@ -19,7 +19,7 @@ function App() {
       }}
       />
       <Route
-        path='/detail/'
+        path='/detail/:title'
         render={(routerProps) => {
           return <VideoDetail match={routerProps.match}/>;
         }}
