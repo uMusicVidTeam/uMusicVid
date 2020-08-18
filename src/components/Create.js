@@ -12,7 +12,7 @@ function Create(props) {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		const api = `${APIURL}/videos/`;
+		const api = `https://umusicvid.herokuapp.com/api/videos/`;
 		Axios.post(
 			api,
 			{

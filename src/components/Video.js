@@ -10,7 +10,7 @@ const Video = ({ match }) => {
 	const [video, setVideo] = useState(null);
 
 	useEffect(() => {
-		const url = `${APIURL}/videos/${match.params.id}`;
+		const url = `https://umusicvid.herokuapp.com/api/videos/${match.params.id}`;
 		Axios(url)
 			.then(setVideo)
 			.catch(() => {
@@ -19,7 +19,7 @@ const Video = ({ match }) => {
 	}, [match.params.id]);
 
 	const onDeleteVideo = (event) => {
-		const url = `${APIURL}/videos/${match.params.id}`;
+		const url = `https://umusicvid.herokuapp.com/api/videos/${match.params.id}`;
 		Axios.delete(url)
 			.then((res) => {
 				setDeleted(true);
