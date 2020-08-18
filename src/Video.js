@@ -1,14 +1,20 @@
 import React, {useState} from 'react';
 import ReactPlayer from 'react-player';
 import Axios from 'axios'
+import { Route, Link } from 'react-router-dom';
 
 function Video(props) {
 
 	const handleUp = (event) => {
 		event.preventDefault();
 		console.log(event.target.id)
-		Axios.put('http://localhost:8080/api/videos/' + props.id, {url: props.url, title: props.title, artist: props.artist, genre: props.genre, votes: {up: props.votes.up + 1, down: props.votes.down}})
-		.then((res) => console.log(res))
+		Axios.put('https://umusicvid.herokuapp.com/api/videos/' + props.id, {
+			url: props.url,
+			title: props.title,
+			artist: props.artist,
+			genre: props.genre,
+			votes: { up: props.votes.up + 1, down: props.votes.down },
+		}).then((res) => console.log(res));
 	};
 
 
@@ -30,8 +36,8 @@ function Video(props) {
 				<button>DOWN</button>
 				<button>DELETE</button>
 				<button>EDIT</button>
+				<Link to={`/detail/${props.title}`}><button>Vote</button></Link>
 			</div>
-			
 		</div>
 	);
 }

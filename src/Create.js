@@ -9,7 +9,7 @@ function Create(props) {
 
 	const handleSubmit = (event) => {
 		Axios
-			.post(`http://localhost:8080/api/videos/`, { url: url, title: title, artist: artist, genre: genre })
+			.post(`https://umusicvid.herokuapp.com/api/videos/`, { url: url, title: title, artist: artist, genre: genre })
 			.then((res) => {
 				props.setCreate('none');
 				console.log(res);

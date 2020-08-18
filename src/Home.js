@@ -7,21 +7,25 @@ function Home() {
 	let [videos, setVideos] = useState([])
 
 	useEffect(() => {
-		Axios.get('http://localhost:8080/api/videos').then((res) => {
-			setVideos(res.data.map((video) => {
-				return (
-		<Video
-			url={video.url}
-			title={video.title}
-			artist={video.artist}
-			genre={video.genre}
-			votes={video.votes}
-			id={video._id}
-			key={video._id}
-		/>
-				)
-			}));
-		});
+		Axios.get('https://umusicvid.herokuapp.com/api/videos').then(
+			(res) => {
+				setVideos(
+					res.data.map((video) => {
+						return (
+							<Video
+								url={video.url}
+								title={video.title}
+								artist={video.artist}
+								genre={video.genre}
+								votes={video.votes}
+								id={video._id}
+								key={video._id}
+							/>
+						);
+					})
+				);
+			}
+		);
 	}, []);
 		
 	
