@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import VideoCreate from './Create';
+import Create from './Create';
 import About from './About';
 import { Link } from 'react-router-dom';
 
-const Header = (props) => {
-	const [create, setCreate] = useState('none');
-	const [about, setAbout] = useState('none');
+function Header(props) {
+	let [create, setCreate] = useState('none');
+	let [about, setAbout] = useState('none');
 
 	return (
 		<header>
@@ -14,7 +14,7 @@ const Header = (props) => {
 			</Link>
 			<button onClick={() => setCreate('flex')}>Add a video</button>
 			<button onClick={() => setAbout('block')}>About</button>
-			<VideoCreate setCreate={setCreate} create={create} />
+			<Create setCreate={setCreate} create={create} />
 			<About setAbout={setAbout} about={about} />
 		</header>
 	);

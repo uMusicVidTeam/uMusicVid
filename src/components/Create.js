@@ -1,39 +1,22 @@
 import React, { useState } from 'react';
-// import { Redirect } from 'react-router-dom';
-import { APIURL } from '../config.js';
-// import VideoForm from './VideoForm.js';
 import Axios from 'axios';
 
 function Create(props) {
-	const [url, setUrl] = useState('');
-	const [title, setTitle] = useState('');
-	const [artist, setArtist] = useState('');
-	const [genre, setGenre] = useState('');
+	let [url, setUrl] = useState('');
+	let [title, setTitle] = useState('');
+	let [artist, setArtist] = useState('');
+	let [genre, setGenre] = useState('');
 
 	const handleSubmit = (event) => {
-		event.preventDefault();
-		const api = `https://umusicvid.herokuapp.com/api/videos/`;
-		Axios.post(
-			api,
-			{
-				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
-				},
-			},
-			{
-				url: url,
-				title: title,
-				artist: artist,
-				genre: genre,
-			}
-		)
-			.then((res) => {
-				props.setCreate('none');
-				console.log(res);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
+		Axios.post(`https://umusicvid.herokuapp.com/api/videos/`, {
+			url: url,
+			title: title,
+			artist: artist,
+			genre: genre,
+		}).then((res) => {
+			props.setCreate('none');
+			console.log(res);
+		});
 	};
 
 	return (

@@ -1,52 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { APIURL } from '../config';
-// import ReactPlayer from 'react-player';
+import React, { useState } from 'react';
+import ReactPlayer from 'react-player';
 import Axios from 'axios';
+import { Route, Link } from 'react-router-dom';
 
-const Video = ({ match }) => {
-	const [deleted, setDeleted] = useState(false);
-	const [error, setError] = useState(false);
-	const [video, setVideo] = useState(null);
-
-	useEffect(() => {
-		const url = `https://umusicvid.herokuapp.com/api/videos/${match.params.id}`;
-		Axios(url)
-			.then(setVideo)
-			.catch(() => {
-				setError(true);
-			});
-	}, [match.params.id]);
-
-	const onDeleteVideo = (event) => {
-		const url = `https://umusicvid.herokuapp.com/api/videos/${match.params.id}`;
-		Axios.delete(url)
-			.then((res) => {
-				setDeleted(true);
-			})
-			.catch(console.error);
+function Video(props) {
+	const handleUp = (event) => {
+		event.preventDefault();
+		console.log(event.target.id);
+		Axios.put('https://umusicvid.herokuapp.com/api/videos/' + props.id, {
+			url: props.url,
+			title: props.title,
+			artist: props.artist,
+			genre: props.genre,
+			votes: { up: props.votes.up + 1, down: props.votes.down },
+		}).then((res) => console.log(res));
 	};
-	if (deleted) {
-		return <Redirect to='/videos' />;
-	}
-
-	if (error) {
-		return <div>Sorry, there was a problem getting the music videos</div>;
-	}
-
-	if (!video) {
-		return <div>Loading...</div>;
-	}
 
 	return (
 		<div>
-			<h3>Title: {video.title}</h3>
-			<p>Artist: {video.artist}</p>
-			<p>Genre: {video.genre}</p>
-			<button onClick={onDeleteVideo}>Delete Music Video</button>
-			<Link to={`/videos/${match.params.id}/edit`}>Update Music Video</Link>
+			<h3>{props.title}</h3>
+			<div className='video'>
+				<ReactPlayer
+					light='true'
+					playIcon='none'
+					controls
+					width='180px'
+					height='180px'
+					url={props.url}
+				/>
+			</div>
+			<div>
+				<button id={props.title} onClick={handleUp}>
+					UP
+				</button>
+				<button>DOWN</button>
+				<button>DELETE</button>
+				<button>EDIT</button>
+				<Link to={`/detail/${props.title}`}>
+					<button>Vote</button>
+				</Link>
+			</div>
 		</div>
 	);
-};
+}
 
 export default Video;
