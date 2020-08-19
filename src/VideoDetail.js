@@ -44,9 +44,9 @@ const handleDelete = (event) => {
         })
     }, [])
 
-    // console.log(video);
+    console.log(video);
     
-    // console.log(video.votes)
+    console.log(video.votes);
 
     return (
 			<div>
