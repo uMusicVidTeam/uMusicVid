@@ -10,11 +10,7 @@ function Home() {
 		Axios.get('https://umusicvid.herokuapp.com/api/videos').then(
 			(res) => {
 				setVideos(
-					res.data.map((video) => {
-						return (
-							video
-						);
-					})
+					res.data
 				);
 			}
 		);

@@ -8,52 +8,56 @@ function VideoDetail(props) {
 	let [video, setVideo] = useState('');
 	let [edit, setEdit] = useState('none');
 	let [deleted, setDelete] = useState(false);
-    
-    useEffect(() => {
-			Axios.get(
-				`https://umusicvid.herokuapp.com/api/videos/${props.match.params.title}`
-			).then((video) => {
-				setVideo(video.data[0]);
-			});
-		}, []);
 
-	const handleUp = () => {
-		Axios.put('https://umusicvid.herokuapp.com/api/videos/' + video._id, {
-			url: video.url,
-			title: video.title,
-			artist: video.artist,
-			genre: video.genre,
-			score: video.score + 1,
-        }, {new: true})
-        .then((res) => {
-            setVideo(res.data);
-        }
-        )};
+	useEffect(() => {
+		Axios.get(
+			`https://umusicvid.herokuapp.com/api/videos/${props.match.params.title}`
+		).then((video) => {
+			setVideo(video.data[0]);
+		});
+	}, []);
+
+	const handleVote = (event) => {
+        const increment = event.target.id === 'up' ? 1 : -1
+		
+			Axios.put(
+				'https://umusicvid.herokuapp.com/api/videos/' + video._id,
+				{
+					url: video.url,
+					title: video.title,
+					artist: video.artist,
+					genre: video.genre,
+					score: video.score + increment,
+				},
+				{ new: true }
+			).then((res) => {
+				setVideo(res.data);
+			});
+	};
 
 	const handleDelete = (event) => {
 		event.preventDefault();
 		Axios.delete(
 			'https://umusicvid.herokuapp.com/api/videos/' + props.match.params.title
 		).then(() => {
-				setDelete(true);
-			})
+			setDelete(true);
+		});
 	};
 
-    if (deleted) {
-        return <Redirect to='/' />
-    }
+	if (deleted) {
+		return <Redirect to='/' />;
+	}
 
 	return (
 		<div>
 			<h1>{props.match.params.title}</h1>
 			<ReactPlayer url={video.url} />
-			<button id={props.match.params.title} onClick={handleUp}>
+			<button id='up' onClick={handleVote}>
 				UP
 			</button>
-			<button>DOWN</button>
+			<button id='down' onClick={handleVote}>DOWN</button>
 			<button onClick={handleDelete}>DELETE</button>
 			<button onClick={() => setEdit('flex')}>EDIT</button>
-			<h2></h2>
 			<Edit
 				url={video.url}
 				artist={video.artist}
