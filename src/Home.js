@@ -4,10 +4,21 @@ import Axios from 'axios';
 
 function Home() {
 	let [videos, setVideos] = useState([]);
+	let [original, setOriginal] = useState([]);
+
+	const filterVideos = (event) => {
+		setVideos(videos.filter((video) => video.genre === event.target.id));
+	};
 
 	useEffect(() => {
 		Axios.get('https://umusicvid.herokuapp.com/api/videos').then((res) => {
 			setVideos(
+				res.data.sort(function (a, b) {
+					return b.score - a.score;
+				})
+			);
+
+			setOriginal(
 				res.data.sort(function (a, b) {
 					return b.score - a.score;
 				})
@@ -32,7 +43,28 @@ function Home() {
 		);
 	});
 
-	return <div>{display}</div>;
+	return (
+		<div>
+			<nav>
+				<button onClick={() => setVideos(original)} id='all'>
+					All Videos
+				</button>
+				<button onClick={filterVideos} id='Pop'>
+					Pop
+				</button>
+				<button onClick={filterVideos} id='Hip-Hop'>
+					Hip-Hop
+				</button>
+				<button onClick={filterVideos} id='Rock'>
+					Rock
+				</button>
+				<button onClick={filterVideos} id='Country'>
+					Country
+				</button>
+			</nav>
+			<div>{display}</div>
+		</div>
+	);
 }
 
 export default Home;

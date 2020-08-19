@@ -8,12 +8,15 @@ function Create(props) {
 	let [genre, setGenre] = useState('');
 
 	const handleSubmit = (event) => {
-		Axios
-			.post(`https://umusicvid.herokuapp.com/api/videos/`, { url: url, title: title, artist: artist, genre: genre })
-			.then((res) => {
-				props.setCreate('none');
-				console.log(res);
-			});
+		Axios.post(`https://umusicvid.herokuapp.com/api/videos/`, {
+			url: url,
+			title: title,
+			artist: artist,
+			genre: genre,
+		}).then((res) => {
+			props.setCreate('none');
+			console.log(res);
+		});
 	};
 
 	return (
