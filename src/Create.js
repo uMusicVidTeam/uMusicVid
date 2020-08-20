@@ -44,6 +44,7 @@ function Create(props) {
 				<input id='submit' type='submit' placeholder='submit'></input>
 			</form>
 			<button onClick={() => props.setCreate('none')}>Cancel</button>
+			<h3>uMusicvid</h3>
 		</div>
 	);
 }
