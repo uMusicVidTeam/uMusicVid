@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
-import Modal from 'react-bootstrap/Modal';
 
 function Create(props) {
 	let [url, setUrl] = useState('');
@@ -10,6 +9,7 @@ function Create(props) {
 	let [createError, setCreateError] = useState('none');
 
 	const handleSubmit = (event) => {
+		console.log(url);
 		if (url === '' || title === '' || artist === '') {
 			event.preventDefault();
 			return setCreateError(true);
