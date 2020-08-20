@@ -5,7 +5,7 @@ function Create(props) {
 	let [url, setUrl] = useState('');
 	let [title, setTitle] = useState('');
 	let [artist, setArtist] = useState('');
-	let [genre, setGenre] = useState('');
+	let [genre, setGenre] = useState('Pop');
 	let [createError, setCreateError] = useState('none');
 
 	const handleSubmit = (event) => {
