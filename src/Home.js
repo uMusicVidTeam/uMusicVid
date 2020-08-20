@@ -13,7 +13,7 @@ function Home() {
 
 	const handleSearch = (event) => {
 		event.preventDefault();
-		setVideos(original.filter((video) => video.title === search))
+		setVideos(original.filter((video) => video.title || video.artist === search))
 	}
 
 	useEffect(() => {
@@ -53,10 +53,10 @@ function Home() {
 		<div>
 
 			<form onSubmit={handleSearch}>
-				<input type='text' placeholder='search by title' onChange={(event) => setSearch(event.target.value)}></input>
+				<input type='text' placeholder='search by title or artist' onChange={(event) => setSearch(event.target.value)}></input>
 				<button type='submit'>SEARCH!</button>
 			</form>
-			
+
 			<nav>
 				<button onClick={() => setVideos(original)} id='all'>
 					All Videos
