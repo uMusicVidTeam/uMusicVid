@@ -7,7 +7,7 @@ function Home() {
 	let [original, setOriginal] = useState([]);
 
 	const filterVideos = (event) => {
-		setVideos(videos.filter((video) => video.genre === event.target.id));
+		setVideos(original.filter((video) => video.genre === event.target.id));
 	};
 
 	useEffect(() => {
