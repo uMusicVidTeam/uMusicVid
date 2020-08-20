@@ -15,7 +15,7 @@ function VideoDetail(props) {
 		).then((video) => {
 			setVideo(video.data[0]);
 		});
-	}, []);
+	}, [props.match.params.title]);
 
 	const handleVote = (event) => {
 		const increment = event.target.id === 'up' ? 1 : -1;
@@ -49,7 +49,7 @@ function VideoDetail(props) {
 	}
 
 	return (
-		<div>
+		<div className='expVideo'>
 			<h1>{props.match.params.title}</h1>
 			<ReactPlayer url={video.url} />
 			<button id='up' onClick={handleVote}>

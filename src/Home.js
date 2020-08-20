@@ -45,6 +45,7 @@ function Home() {
 					votes={video.votes}
 					id={video._id}
 					key={video._id}
+					index={videos.indexOf(video)}
 				/>
 				<h3>Score: {video.score}</h3>
 			</div>
