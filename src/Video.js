@@ -14,7 +14,7 @@ function Video(props) {
 			<div className='video'>
 				<ReactPlayer
 					controls
-					width='180px'
+					width='30%'
 					height='180px'
 					url={props.url}
 				/>

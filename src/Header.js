@@ -10,7 +10,7 @@ function Header(props) {
 	return (
 		<header>
 			<Link to='/'>
-				<h3>uMusicvid</h3>
+				<h2 className='app-title'>uMusicvid</h2>
 			</Link>
 			<button onClick={() => setCreate('flex')}>Add a video</button>
 			<button onClick={() => setAbout('block')}>About</button>
