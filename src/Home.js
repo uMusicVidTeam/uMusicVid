@@ -14,7 +14,11 @@ function Home() {
 	const handleSearch = (event) => {
 		event.preventDefault();
 		setVideos(
-			original.filter((video) => video.title || video.artist === search)
+			original.filter(
+				(video) =>
+					video.title.toLowerCase().includes(search) ||
+					video.artist.toLowerCase().includes(search)
+			)
 		);
 	};
 
@@ -58,7 +62,9 @@ function Home() {
 				<input
 					type='text'
 					placeholder='search by title or artist'
-					onChange={(event) => setSearch(event.target.value)}></input>
+					onChange={(event) =>
+						setSearch(event.target.value.toLowerCase())
+					}></input>
 				<button type='submit'>SEARCH!</button>
 			</form>
 
