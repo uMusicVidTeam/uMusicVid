@@ -13,8 +13,10 @@ function Home() {
 
 	const handleSearch = (event) => {
 		event.preventDefault();
-		setVideos(original.filter((video) => video.title || video.artist === search))
-	}
+		setVideos(
+			original.filter((video) => video.title || video.artist === search)
+		);
+	};
 
 	useEffect(() => {
 		Axios.get('https://umusicvid.herokuapp.com/api/videos').then((res) => {
@@ -51,9 +53,11 @@ function Home() {
 
 	return (
 		<div>
-
 			<form onSubmit={handleSearch}>
-				<input type='text' placeholder='search by title or artist' onChange={(event) => setSearch(event.target.value)}></input>
+				<input
+					type='text'
+					placeholder='search by title or artist'
+					onChange={(event) => setSearch(event.target.value)}></input>
 				<button type='submit'>SEARCH!</button>
 			</form>
 

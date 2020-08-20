@@ -6,8 +6,13 @@ function Create(props) {
 	let [title, setTitle] = useState('');
 	let [artist, setArtist] = useState('');
 	let [genre, setGenre] = useState('');
+	let [createError, setCreateError] = useState('none');
 
 	const handleSubmit = (event) => {
+		if (url === '' || title === '' || artist === '') {
+			event.preventDefault();
+			return setCreateError(true);
+		}
 		Axios.post(`https://umusicvid.herokuapp.com/api/videos/`, {
 			url: url,
 			title: title,
@@ -39,13 +44,43 @@ function Create(props) {
 					id='artist'
 					type='text'
 					placeholder='artist'></input>
-				<input
-					onChange={(event) => setGenre(event.target.value)}
-					id='genre'
-					type='text'
-					placeholder='genre'></input>
+				<select onChange={(event) => setGenre(event.target.value)} id='genre'>
+					<option selected={props.genre === 'Pop' ? true : false} value='Pop'>
+						Pop
+					</option>
+					<option selected={props.genre === 'Rock' ? true : false} value='Rock'>
+						Rock
+					</option>
+					<option
+						selected={props.genre === 'Hip-Hop' ? true : false}
+						value='Hip-Hop'>
+						Hip-Hop
+					</option>
+					<option selected={props.genre === 'RnB' ? true : false} value='RnB'>
+						RnB
+					</option>
+					<option
+						selected={props.genre === 'Metal' ? true : false}
+						value='Metal'>
+						Metal
+					</option>
+					<option
+						selected={props.genre === 'Country' ? true : false}
+						value='Country'>
+						Country
+					</option>
+					<option
+						selected={props.genre === 'Other' ? true : false}
+						value='Other'>
+						Other
+					</option>
+				</select>
 				<input id='submit' type='submit' placeholder='submit'></input>
 			</form>
+			<div className='modal' style={{ display: createError }}>
+				<h2>NO FIELD SHALL BE LEFT BLANK.</h2>
+				<button onClick={() => setCreateError('none')}>Sorry...</button>
+			</div>
 			<button onClick={() => props.setCreate('none')}>Cancel</button>
 		</div>
 	);

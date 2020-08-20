@@ -6,15 +6,8 @@ function Edit(props) {
 	let [title, setTitle] = useState('');
 	let [artist, setArtist] = useState('');
 	let [genre, setGenre] = useState('');
-	let [editError, setEditError] = useState('none');
 
 	const handleSubmit = (event) => {
-		// if (url === '' || title === '' || artist === '') {
-		//     event.preventDefault();
-		//     console.log(url, title, artist)
-		//     console.log(genre);
-		//     return setEditError('flex');
-		// }
 		Axios.put(`https://umusicvid.herokuapp.com/api/videos/${props.id}`, {
 			url: url || props.url,
 			title: title || props.title,
@@ -82,10 +75,6 @@ function Edit(props) {
 					<input id='submit' type='submit' placeholder='submit'></input>
 				</form>
 				<button onClick={() => props.setEdit('none')}>Cancel</button>
-			</div>
-			<div className='modal' style={{ display: editError }}>
-				<h2>NO FIELD SHALL BE LEFT BLANK.</h2>
-				<button onClick={() => setEditError('none')}>Sorry...</button>
 			</div>
 		</div>
 	);

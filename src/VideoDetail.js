@@ -18,21 +18,21 @@ function VideoDetail(props) {
 	}, []);
 
 	const handleVote = (event) => {
-        const increment = event.target.id === 'up' ? 1 : -1
-		
-			Axios.put(
-				'https://umusicvid.herokuapp.com/api/videos/' + video._id,
-				{
-					url: video.url,
-					title: video.title,
-					artist: video.artist,
-					genre: video.genre,
-					score: video.score + increment,
-				},
-				{ new: true }
-			).then((res) => {
-				setVideo(res.data);
-			});
+		const increment = event.target.id === 'up' ? 1 : -1;
+
+		Axios.put(
+			'https://umusicvid.herokuapp.com/api/videos/' + video._id,
+			{
+				url: video.url,
+				title: video.title,
+				artist: video.artist,
+				genre: video.genre,
+				score: video.score + increment,
+			},
+			{ new: true }
+		).then((res) => {
+			setVideo(res.data);
+		});
 	};
 
 	const handleDelete = (event) => {
@@ -55,7 +55,9 @@ function VideoDetail(props) {
 			<button id='up' onClick={handleVote}>
 				UP
 			</button>
-			<button id='down' onClick={handleVote}>DOWN</button>
+			<button id='down' onClick={handleVote}>
+				DOWN
+			</button>
 			<button onClick={handleDelete}>DELETE</button>
 			<button onClick={() => setEdit('flex')}>EDIT</button>
 			<Edit
