@@ -4,6 +4,8 @@ import Home from './Home';
 import './App.css';
 import { Route } from 'react-router-dom';
 import VideoDetail from './VideoDetail';
+import Signup from './Signup';
+import Login from './Login';
 
 function App() {
 	return (
@@ -22,6 +24,8 @@ function App() {
 					return <VideoDetail match={routerProps.match} />;
 				}}
 			/>
+			<Route path='/signup' component={Signup} />
+			<Route path='/login' component={Login} />
 		</div>
 	);
 }

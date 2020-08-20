@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
+import { APIURL } from './config.js';
+
 import Axios from 'axios';
 
 function Edit(props) {
-	let [link, setLink] = useState('');
+	let [url, setUrl] = useState('');
 	let [title, setTitle] = useState('');
 	let [artist, setArtist] = useState('');
 	let [genre, setGenre] = useState('');
 
 	const handleSubmit = (event) => {
 		Axios({
-			url: `https://umusicvid.herokuapp.com/api/videos/${props.id}`,
+			url: `${APIURL}/videos/${props.id}`,
 			method: 'PUT',
 			headers: {
 				Authorization: `Bearer ${props.token}`,
 			},
-			link: link,
-			title: title,
-			artist: artist,
-			genre: genre,
+			data: {
+				url: url,
+				title: title,
+				artist: artist,
+				genre: genre,
+			},
 		}).then((res) => {
 			props.setEdit('none');
 			console.log(res);
@@ -30,10 +34,10 @@ function Edit(props) {
 				style={{ display: 'flex', flexDirection: 'column' }}
 				onSubmit={handleSubmit}>
 				<input
-					onChange={(event) => setLink(event.target.value)}
-					id='link'
+					onChange={(event) => setUrl(event.target.value)}
+					id='url'
 					type='text'
-					placeholder={props.link}></input>
+					placeholder={props.url}></input>
 				<input
 					onChange={(event) => setTitle(event.target.value)}
 					id='title'

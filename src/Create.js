@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import { APIURL } from './config.js';
 
 function Create(props) {
-	let [link, setLink] = useState('');
+	let [url, setUrl] = useState('');
 	let [title, setTitle] = useState('');
 	let [artist, setArtist] = useState('');
 	let [genre, setGenre] = useState('');
 
 	const handleSubmit = (event) => {
+		// event.preventDefault();
 		Axios({
-			url: `https://umusicvid.herokuapp.com/api/videos/`,
+			url: `${APIURL}/videos`,
 			method: 'POST',
 			headers: {
-				Authorization: `Bearer ${props.token}`,
+				Authorization: `Bearer ${sessionStorage.getItem('token')}`,
 			},
-			link: link,
-			title: title,
-			artist: artist,
-			genre: genre,
+			data: {
+				url: url,
+				title: title,
+				artist: artist,
+				genre: genre,
+			},
 		}).then((res) => {
 			props.setCreate('none');
-			console.log(res);
 		});
 	};
 
@@ -30,10 +33,10 @@ function Create(props) {
 				style={{ display: 'flex', flexDirection: 'column' }}
 				onSubmit={handleSubmit}>
 				<input
-					onChange={(event) => setLink(event.target.value)}
-					id='link'
+					onChange={(event) => setUrl(event.target.value)}
+					id='url'
 					type='text'
-					placeholder='link'></input>
+					placeholder='url'></input>
 				<input
 					onChange={(event) => setTitle(event.target.value)}
 					id='title'

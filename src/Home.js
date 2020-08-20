@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Video from './Video';
-import Axios from 'axios';
+import axios from 'axios';
+import { APIURL } from './config.js';
+import { Link } from 'react-router-dom';
 
 function Home() {
 	let [videos, setVideos] = useState([]);
@@ -11,7 +13,7 @@ function Home() {
 	};
 
 	useEffect(() => {
-		Axios.get('https://umusicvid.herokuapp.com/api/videos').then((res) => {
+		axios.get(`${APIURL}/videos`).then((res) => {
 			setVideos(
 				res.data.sort(function (a, b) {
 					return b.score - a.score;
@@ -46,6 +48,8 @@ function Home() {
 	return (
 		<div>
 			<nav>
+				<Link to='/signup'>Signup</Link>
+				<Link to='/login'>Login</Link>
 				<button onClick={() => setVideos(original)} id='all'>
 					All Videos
 				</button>
