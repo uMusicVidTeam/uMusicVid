@@ -5,10 +5,16 @@ import Axios from 'axios';
 function Home() {
 	let [videos, setVideos] = useState([]);
 	let [original, setOriginal] = useState([]);
+	let [search, setSearch] = useState('');
 
 	const filterVideos = (event) => {
 		setVideos(original.filter((video) => video.genre === event.target.id));
 	};
+
+	const handleSearch = (event) => {
+		event.preventDefault();
+		setVideos(original.filter((video) => video.title === search))
+	}
 
 	useEffect(() => {
 		Axios.get('https://umusicvid.herokuapp.com/api/videos').then((res) => {
@@ -45,6 +51,12 @@ function Home() {
 
 	return (
 		<div>
+
+			<form onSubmit={handleSearch}>
+				<input type='text' placeholder='search by title' onChange={(event) => setSearch(event.target.value)}></input>
+				<button type='submit'>SEARCH!</button>
+			</form>
+			
 			<nav>
 				<button onClick={() => setVideos(original)} id='all'>
 					All Videos
