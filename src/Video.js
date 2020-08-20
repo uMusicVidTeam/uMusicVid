@@ -20,7 +20,7 @@ function Video(props) {
 				</container>
 			</Link>
 			<div>
-				<Link to={`/detail/${props.title}`}>
+				<Link to={`/detail/${props.id}`}>
 					<button>Vote</button>
 				</Link>
 			</div>

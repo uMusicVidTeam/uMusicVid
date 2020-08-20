@@ -7,15 +7,18 @@ import { Redirect } from 'react-router-dom';
 function VideoDetail(props) {
 	let [video, setVideo] = useState('');
 	let [edit, setEdit] = useState('none');
-	let [deleted, setDelete] = useState(false);
+    let [deleted, setDelete] = useState(false);
+    let [title, setTitle] = useState('Loading')
 
 	useEffect(() => {
 		Axios.get(
-			`https://umusicvid.herokuapp.com/api/videos/${props.match.params.title}`
+			`https://umusicvid.herokuapp.com/api/videos/${props.match.params.id}`
 		).then((video) => {
-			setVideo(video.data[0]);
+            console.log(video);
+            setVideo(video.data);
+            setTitle(video.data.title)
 		});
-	}, [props.match.params.title]);
+	}, [props.match.params.id]);
 
 	const handleVote = (event) => {
 		const increment = event.target.id === 'up' ? 1 : -1;
@@ -38,7 +41,7 @@ function VideoDetail(props) {
 	const handleDelete = (event) => {
 		event.preventDefault();
 		Axios.delete(
-			'https://umusicvid.herokuapp.com/api/videos/' + props.match.params.title
+			'https://umusicvid.herokuapp.com/api/videos/' + props.match.params.id
 		).then(() => {
 			setDelete(true);
 		});
@@ -50,8 +53,8 @@ function VideoDetail(props) {
 
 	return (
 		<div className='expVideo'>
-			<h1>{props.match.params.title}</h1>
-			<ReactPlayer url={video.url} />
+			<h1>{title}</h1>
+			<ReactPlayer url={video ? video.url : ''} />
 			<button id='up' onClick={handleVote}>
 				UP
 			</button>
