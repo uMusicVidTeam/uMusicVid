@@ -1,3 +1,8 @@
+body {
+	background: rgb(22, 6, 66);
+	color: grey;
+}
+
 .modal {
 	position: fixed;
 	flex-direction: column;
@@ -19,9 +24,14 @@
 	text-align: center;
 }
 
+.video-title {
+	size: 2em;
+}
+
 .app-title {
-	font-size: 2rem;
-	text-decoration: none;
+	font-size: 3rem;
+	color: white;
+
 }
 
 .video {
