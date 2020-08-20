@@ -13,8 +13,8 @@ function Header(props) {
 	return (
 		<header>
 			<Navbar color='dark' dark>
-				<Link to='/'>
-					<h3>uMusicvid</h3>
+				<Link to='/' style={{ textDecoration: 'none' }}>
+					<h3 className='app-title'>uMusicvid</h3>
 				</Link>
 				<button onClick={() => {setCreate('flex'); setModalShow(true)}}>Add a video</button>
 				<button onClick={() => setAbout('block')}>About</button>

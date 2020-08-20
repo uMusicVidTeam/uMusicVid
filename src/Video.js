@@ -10,17 +10,13 @@ function Video(props) {
 
 	return (
 		<div>
-			<h3>{props.title}</h3>
+			{/* <hr></hr> */}
+			<br></br>
+			<h3 className='video-title'>{props.title}</h3>
 			<Link style={navStyle} to='/Largevideos'>
 				<container>
-					<hr></hr>
 					<div className='video'>
-						<ReactPlayer
-							controls
-							width='38%'
-							height='200px'
-							url={props.url}
-						/>
+						<ReactPlayer controls width='45vw' height='45vh' url={props.url} />
 					</div>
 				</container>
 			</Link>

@@ -19,13 +19,8 @@
 	text-align: center;
 }
 
-header {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-}
-
 .app-title {
+	font-size: 2rem;
 	text-decoration: none;
 }
 
@@ -40,13 +35,11 @@ header {
 .expVideo {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 }
 
 button {
 	font-size: 20px;
-	opacity: 0.6;
 }
 
 button:hover {
