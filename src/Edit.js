@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 
 function Edit(props) {
-	let [url, setUrl] = useState('');
+	let [link, setLink] = useState('');
 	let [title, setTitle] = useState('');
 	let [artist, setArtist] = useState('');
 	let [genre, setGenre] = useState('');
 
 	const handleSubmit = (event) => {
-		Axios.put(`https://umusicvid.herokuapp.com/api/videos/${props.id}`, {
-			url: url,
+		Axios({
+			url: `https://umusicvid.herokuapp.com/api/videos/${props.id}`,
+			method: 'PUT',
+			headers: {
+				Authorization: `Bearer ${props.token}`,
+			},
+			link: link,
 			title: title,
 			artist: artist,
 			genre: genre,
@@ -25,10 +30,10 @@ function Edit(props) {
 				style={{ display: 'flex', flexDirection: 'column' }}
 				onSubmit={handleSubmit}>
 				<input
-					onChange={(event) => setUrl(event.target.value)}
-					id='url'
+					onChange={(event) => setLink(event.target.value)}
+					id='link'
 					type='text'
-					placeholder={props.url}></input>
+					placeholder={props.link}></input>
 				<input
 					onChange={(event) => setTitle(event.target.value)}
 					id='title'

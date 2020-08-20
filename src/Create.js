@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 
 function Create(props) {
-	let [url, setUrl] = useState('');
+	let [link, setLink] = useState('');
 	let [title, setTitle] = useState('');
 	let [artist, setArtist] = useState('');
 	let [genre, setGenre] = useState('');
 
 	const handleSubmit = (event) => {
-		Axios.post(`https://umusicvid.herokuapp.com/api/videos/`, {
-			url: url,
+		Axios({
+			url: `https://umusicvid.herokuapp.com/api/videos/`,
+			method: 'POST',
+			headers: {
+				Authorization: `Bearer ${props.token}`,
+			},
+			link: link,
 			title: title,
 			artist: artist,
 			genre: genre,
@@ -25,10 +30,10 @@ function Create(props) {
 				style={{ display: 'flex', flexDirection: 'column' }}
 				onSubmit={handleSubmit}>
 				<input
-					onChange={(event) => setUrl(event.target.value)}
-					id='url'
+					onChange={(event) => setLink(event.target.value)}
+					id='link'
 					type='text'
-					placeholder='url'></input>
+					placeholder='link'></input>
 				<input
 					onChange={(event) => setTitle(event.target.value)}
 					id='title'

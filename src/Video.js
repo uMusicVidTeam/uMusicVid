@@ -7,7 +7,7 @@ function Video(props) {
 		<div>
 			<h3>{props.title}</h3>
 			<div className='video'>
-				<ReactPlayer controls width='180px' height='180px' url={props.url} />
+				<ReactPlayer controls width='180px' height='180px' link={props.link} />
 			</div>
 			<div>
 				<Link to={`/detail/${props.title}`}>
