@@ -11,10 +11,10 @@ function VideoDetail(props) {
 	let [deleted, setDelete] = useState(false);
 
 	useEffect(() => {
-		axios.get(`${APIURL}/videos/${props.match.params.title}`).then((video) => {
-			setVideo(video.data[0]);
+		axios.get(`${APIURL}/videos/${props.match.params.id}`).then((video) => {
+			setVideo(video.data);
 		});
-	}, [props.match.params.id, props.match.params.title]);
+	}, [props.match.params.id]);
 
 	const handleVote = (event) => {
 		const increment = event.target.id === 'up' ? 1 : -1;
