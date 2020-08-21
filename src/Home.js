@@ -61,15 +61,16 @@ function Home() {
 			<br></br>
 			<form className='filters' onSubmit={handleSearch}>
 				<input
+					className='search-input'
 					type='text'
 					placeholder='search by title or artist'
 					onChange={(event) =>
 						setSearch(event.target.value.toLowerCase())
 					}></input>
-				<button type='submit'>SEARCH!</button>
+				<button type='submit'>Search</button>
 			</form>
-					<br></br>
-					<h4>Filter by genre:</h4>
+			<br></br>
+			<h4>Filter by genre:</h4>
 			<nav>
 				<button onClick={() => setVideos(original)} id='all'>
 					All Videos
