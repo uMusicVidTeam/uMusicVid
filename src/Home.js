@@ -58,7 +58,8 @@ function Home() {
 
 	return (
 		<div>
-			<form onSubmit={handleSearch}>
+			<br></br>
+			<form className='filters' onSubmit={handleSearch}>
 				<input
 					type='text'
 					placeholder='search by title or artist'
@@ -67,7 +68,8 @@ function Home() {
 					}></input>
 				<button type='submit'>SEARCH!</button>
 			</form>
-
+					<br></br>
+					<h4>Filter by genre:</h4>
 			<nav>
 				<button onClick={() => setVideos(original)} id='all'>
 					All Videos

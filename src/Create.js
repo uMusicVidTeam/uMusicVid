@@ -25,7 +25,9 @@ function Create(props) {
 
 	return (
 		<div className='modal' style={{ display: props.create }}>
+			<p>Enter a valid URL and all relevant information to your video</p>
 			<form
+				className='create-form'
 				style={{ display: 'flex', flexDirection: 'column' }}
 				onSubmit={handleSubmit}>
 				<input

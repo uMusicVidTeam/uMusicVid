@@ -11,7 +11,7 @@ function Header(props) {
 
 	return (
 		<header>
-			<Navbar color='dark' dark>
+			<Navbar style={{ display: 'inline' }}>
 				<Link to='/' style={{ textDecoration: 'none' }}>
 					<h3 className='app-title'>uMusicvid</h3>
 				</Link>

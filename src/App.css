@@ -21,6 +21,33 @@ body {
 	color: rgb(87, 81, 81);
 }
 
+nav {
+	display: flex;
+	flex-direction: rows;
+	justify-content: space-evenly;
+
+}
+
+/* .create-form {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin: 10px;
+	font-size: 16px;
+} */
+
+.filters {
+	display: block;
+}
+
+form {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin: 10px;
+	font-size: 16px;
+}
+
 .App {
 	text-align: center;
 }
