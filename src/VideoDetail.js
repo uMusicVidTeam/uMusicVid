@@ -14,14 +14,14 @@ function VideoDetail(props) {
 		axios.get(`${APIURL}/videos/${props.match.params.title}`).then((video) => {
 			setVideo(video.data[0]);
 		});
-	}, [props.match.params.title]);
+	}, [props.match.params.id, props.match.params.title]);
 
 	const handleVote = (event) => {
 		const increment = event.target.id === 'up' ? 1 : -1;
 
 		axios
 			.put(
-				`${APIURL}/videos/${video._id}`,
+				`${APIURL}/videos/${props.match.params.id}`,
 				{
 					url: video.url,
 					title: video.title,
@@ -32,13 +32,16 @@ function VideoDetail(props) {
 				{ new: true }
 			)
 			.then((res) => {
-				setVideo(res.data);
+				let pleaseWork = res.data.filter(
+					(obj) => obj._id === props.match.params.id
+				);
+				setVideo(pleaseWork[0]);
 			});
 	};
 
 	const handleDelete = (event) => {
 		event.preventDefault();
-		axios.delete(`${APIURL}/videos/${props.match.params.title}`).then(() => {
+		axios.delete(`${APIURL}/videos/${video._id}`).then(() => {
 			setDelete(true);
 		});
 	};
@@ -49,7 +52,7 @@ function VideoDetail(props) {
 
 	return (
 		<div className='expVideo'>
-			<h1>{props.match.params.title}</h1>
+			<h1>{video.title}</h1>
 			<ReactPlayer url={video.url} />
 			<button id='up' onClick={handleVote}>
 				UP

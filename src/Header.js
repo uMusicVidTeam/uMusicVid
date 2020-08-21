@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import Create from './Create';
 import About from './About';
-import { Link, Redirect } from 'react-router-dom';
-import { Breadcrumb } from 'react-bootstrap';
-import { Navbar, Nav, NavItem, NavbarBrand, Container } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { Navbar } from 'reactstrap';
 
 function Header(props) {
 	let [create, setCreate] = useState('none');
 	let [about, setAbout] = useState('none');
-	const [modalShow, setModalShow] = React.useState(false);
+	const [modalShow, setModalShow] = useState(false);
 
 	return (
 		<header>
-			<Navbar color='dark' dark>
+			<Navbar style={{ display: 'inline' }}>
 				<Link to='/' style={{ textDecoration: 'none' }}>
 					<h3 className='app-title'>uMusicvid</h3>
 				</Link>
+				<Link to='/signup'>Signup</Link>
+				<br />
+				<Link to='/login'>Login</Link>
+				<br />
 				<button
 					onClick={() => {
 						if (!sessionStorage.token) {

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Video from './Video';
 import axios from 'axios';
 import { APIURL } from './config.js';
-import { Link } from 'react-router-dom';
 
 function Home() {
 	let [videos, setVideos] = useState([]);
@@ -53,26 +52,27 @@ function Home() {
 					key={video._id}
 					index={videos.indexOf(video)}
 				/>
-				<h3>Score: {video.score}</h3>
+				<h2>Score: {video.score}</h2>
 			</div>
 		);
 	});
 
 	return (
 		<div>
-			<form onSubmit={handleSearch}>
+			<br></br>
+			<form className='filters' onSubmit={handleSearch}>
 				<input
+					className='search-input'
 					type='text'
 					placeholder='search by title or artist'
 					onChange={(event) =>
 						setSearch(event.target.value.toLowerCase())
 					}></input>
-				<button type='submit'>SEARCH!</button>
+				<button type='submit'>Search</button>
 			</form>
-
+			<br></br>
+			<h2>Filter by genre:</h2>
 			<nav>
-				<Link to='/signup'>Signup</Link>
-				<Link to='/login'>Login</Link>
 				<button onClick={() => setVideos(original)} id='all'>
 					All Videos
 				</button>
@@ -82,11 +82,20 @@ function Home() {
 				<button onClick={filterVideos} id='Hip-Hop'>
 					Hip-Hop
 				</button>
+				<button onClick={filterVideos} id='RnB'>
+					RnB
+				</button>
 				<button onClick={filterVideos} id='Rock'>
 					Rock
 				</button>
+				<button onClick={filterVideos} id='Metal'>
+					Metal
+				</button>
 				<button onClick={filterVideos} id='Country'>
 					Country
+				</button>
+				<button onClick={filterVideos} id='Other'>
+					Other
 				</button>
 			</nav>
 			<div>{display}</div>

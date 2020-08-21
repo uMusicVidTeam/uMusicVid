@@ -6,12 +6,10 @@ function Create(props) {
 	let [url, setUrl] = useState('');
 	let [title, setTitle] = useState('');
 	let [artist, setArtist] = useState('');
-	let [genre, setGenre] = useState('');
+	let [genre, setGenre] = useState('Pop');
 	let [createError, setCreateError] = useState('none');
 
 	const handleSubmit = (event) => {
-		// event.preventDefault();
-		console.log(url);
 		if (url === '' || title === '' || artist === '') {
 			event.preventDefault();
 			return setCreateError(true);
@@ -35,7 +33,9 @@ function Create(props) {
 
 	return (
 		<div className='modal' style={{ display: props.create }}>
+			<p>Enter a valid URL and all relevant information to your video</p>
 			<form
+				className='create-form'
 				style={{ display: 'flex', flexDirection: 'column' }}
 				onSubmit={handleSubmit}>
 				<input
