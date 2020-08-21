@@ -9,7 +9,6 @@ function Create(props) {
 	let [createError, setCreateError] = useState('none');
 
 	const handleSubmit = (event) => {
-		console.log(url);
 		if (url === '' || title === '' || artist === '') {
 			event.preventDefault();
 			return setCreateError(true);
@@ -21,7 +20,6 @@ function Create(props) {
 			genre: genre,
 		}).then((res) => {
 			props.setCreate('none');
-			console.log(res);
 		});
 	};
 
