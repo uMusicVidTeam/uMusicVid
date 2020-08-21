@@ -16,7 +16,10 @@
 ## Wireframe link: https://miro.com/welcomeonboard/mgj9RJ3g9URCYfpTlrsQDdxLcwVezuErN2aMfJ5O8vMsEzLqnfk7sefweLPkGqiW
 
 ## Known Bugs/Future Goals:
-- A search bar + other filter features like sorting votes from low to high
+- Other filtering features like sorting votes from low to high
+- Combining Create and Edit components
+- Anticipating large amounts of data in the database by only loading 10 results per page or loading by scroll distance
+- merging user auth work into master, and adding features such as comments and seeing which videos a user has voted on
 
 ## MVP
 - As a user I would like to have the videos displayed on the main page.

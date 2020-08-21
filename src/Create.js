@@ -28,7 +28,7 @@ function Create(props) {
 			<p>Enter a valid URL and all relevant information to your video</p>
 			<form
 				className='create-form'
-				style={{ display: 'flex', flexDirection: 'column' }}
+				style={{ display: 'flex', flexDirection: 'column'}}
 				onSubmit={handleSubmit}>
 				<input
 					onChange={(event) => setUrl(event.target.value)}

@@ -7,7 +7,7 @@ function Video(props) {
 	return (
 		<div>
 			<br></br>
-			<h3 className='video-title'>{props.title}</h3>
+			<h3 className='video-title'>{props.index + 1}. {props.title}</h3>
 					<div className='video'>
 						<ReactPlayer controls width='40%' height='300px' url={props.url} />
 					</div>

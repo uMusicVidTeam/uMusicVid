@@ -7,7 +7,7 @@ import { Navbar } from 'reactstrap';
 function Header(props) {
 	let [create, setCreate] = useState('none');
 	let [about, setAbout] = useState('none');
-	const [modalShow, setModalShow] = React.useState(false);
+	const [modalShow, setModalShow] = useState(false);
 
 	return (
 		<header>
