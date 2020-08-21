@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactPlayer from 'react-player';
-import Axios from 'axios';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import { FontAwesomeIcon } from '@fortawesome/react-dontawesome';
 
 

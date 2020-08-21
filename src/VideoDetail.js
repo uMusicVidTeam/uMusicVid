@@ -13,7 +13,6 @@ function VideoDetail(props) {
 		Axios.get(
 			`https://umusicvid.herokuapp.com/api/videos/${props.match.params.id}`
 		).then((video) => {
-			console.log(video);
 			setVideo(video.data);
 		});
 	}, [props.match.params.id]);

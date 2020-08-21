@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import Create from './Create';
 import About from './About';
 import { Link } from 'react-router-dom';
-import { Breadcrumb } from 'react-bootstrap';
-import { Navbar, Nav, NavItem, NavbarBrand, Container } from 'reactstrap';
+import { Navbar } from 'reactstrap';
 
 function Header(props) {
 	let [create, setCreate] = useState('none');
