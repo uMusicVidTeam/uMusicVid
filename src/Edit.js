@@ -17,45 +17,74 @@ function Edit(props) {
 				Authorization: `Bearer ${props.token}`,
 			},
 			data: {
-				url: url,
-				title: title,
-				artist: artist,
-				genre: genre,
+				url: url || props.url,
+				title: title || props.title,
+				artist: artist || props.artist,
+				genre: genre || props.genre,
 			},
 		}).then((res) => {
 			props.setEdit('none');
-			console.log(res);
 		});
 	};
 
 	return (
-		<div className='modal' style={{ display: props.edit }}>
-			<form
-				style={{ display: 'flex', flexDirection: 'column' }}
-				onSubmit={handleSubmit}>
-				<input
-					onChange={(event) => setUrl(event.target.value)}
-					id='url'
-					type='text'
-					placeholder={props.url}></input>
-				<input
-					onChange={(event) => setTitle(event.target.value)}
-					id='title'
-					type='text'
-					placeholder={props.title}></input>
-				<input
-					onChange={(event) => setArtist(event.target.value)}
-					id='artist'
-					type='text'
-					placeholder={props.artist}></input>
-				<input
-					onChange={(event) => setGenre(event.target.value)}
-					id='genre'
-					type='text'
-					placeholder={props.genre}></input>
-				<input id='submit' type='submit' placeholder='submit'></input>
-			</form>
-			<button onClick={() => props.setEdit('none')}>Cancel</button>
+		<div>
+			<div className='modal' style={{ display: props.edit }}>
+				<form
+					style={{ display: 'flex', flexDirection: 'column' }}
+					onSubmit={handleSubmit}>
+					<input
+						onChange={(event) => setUrl(event.target.value)}
+						id='url'
+						type='text'
+						defaultValue={props.url}></input>
+					<input
+						onChange={(event) => setTitle(event.target.value)}
+						id='title'
+						type='text'
+						defaultValue={props.title}></input>
+					<input
+						onChange={(event) => setArtist(event.target.value)}
+						id='artist'
+						type='text'
+						defaultValue={props.artist}></input>
+					<select onChange={(event) => setGenre(event.target.value)} id='genre'>
+						<option selected={props.genre === 'Pop' ? true : false} value='Pop'>
+							Pop
+						</option>
+						<option
+							selected={props.genre === 'Rock' ? true : false}
+							value='Rock'>
+							Rock
+						</option>
+						<option
+							selected={props.genre === 'Hip-Hop' ? true : false}
+							value='Hip-Hop'>
+							Hip-Hop
+						</option>
+						<option selected={props.genre === 'RnB' ? true : false} value='RnB'>
+							RnB
+						</option>
+						<option
+							selected={props.genre === 'Metal' ? true : false}
+							value='Metal'>
+							Metal
+						</option>
+						<option
+							selected={props.genre === 'Country' ? true : false}
+							value='Country'>
+							Country
+						</option>
+						<option
+							selected={props.genre === 'Other' ? true : false}
+							value='Other'>
+							Other
+						</option>
+					</select>
+					<input id='submit' type='submit' placeholder='submit'></input>
+				</form>
+				<button onClick={() => props.setEdit('none')}>Cancel</button>
+			</div>
 		</div>
 	);
 }

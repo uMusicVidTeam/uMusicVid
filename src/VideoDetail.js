@@ -48,7 +48,7 @@ function VideoDetail(props) {
 	}
 
 	return (
-		<div>
+		<div className='expVideo'>
 			<h1>{props.match.params.title}</h1>
 			<ReactPlayer url={video.url} />
 			<button id='up' onClick={handleVote}>

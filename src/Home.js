@@ -7,9 +7,21 @@ import { Link } from 'react-router-dom';
 function Home() {
 	let [videos, setVideos] = useState([]);
 	let [original, setOriginal] = useState([]);
+	let [search, setSearch] = useState('');
 
 	const filterVideos = (event) => {
-		setVideos(videos.filter((video) => video.genre === event.target.id));
+		setVideos(original.filter((video) => video.genre === event.target.id));
+	};
+
+	const handleSearch = (event) => {
+		event.preventDefault();
+		setVideos(
+			original.filter(
+				(video) =>
+					video.title.toLowerCase().includes(search) ||
+					video.artist.toLowerCase().includes(search)
+			)
+		);
 	};
 
 	useEffect(() => {
@@ -39,6 +51,7 @@ function Home() {
 					votes={video.votes}
 					id={video._id}
 					key={video._id}
+					index={videos.indexOf(video)}
 				/>
 				<h3>Score: {video.score}</h3>
 			</div>
@@ -47,6 +60,16 @@ function Home() {
 
 	return (
 		<div>
+			<form onSubmit={handleSearch}>
+				<input
+					type='text'
+					placeholder='search by title or artist'
+					onChange={(event) =>
+						setSearch(event.target.value.toLowerCase())
+					}></input>
+				<button type='submit'>SEARCH!</button>
+			</form>
+
 			<nav>
 				<Link to='/signup'>Signup</Link>
 				<Link to='/login'>Login</Link>
